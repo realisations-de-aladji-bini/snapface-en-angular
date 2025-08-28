@@ -1,0 +1,14 @@
+<div class="face-snap-card" [ngClass]="{'snapped': isLiked}">
+  <h2 class="itemToCenter"> {{ faceSnap.title | uppercase }} </h2>
+  <a routerLink = "/facesnaps">Retour à la liste</a>
+  <p id="location">
+    @if (faceSnap.location) {
+      Lieu : {{ faceSnap.location }}
+    } @else {
+      Aucun lieu indiqué pour cette photo
+    }
+  </p>
+  <img [src]="faceSnap.snapUrl" [alt]="faceSnap.title" >
+  <p class="itemToCenter"> {{ faceSnap.description }} </p>
+  <p id="snap-infos">  Publiée le {{ faceSnap.createdAt | date : 'dd MMMM YYYY à HH:mm' }} <span (click)="onLike()" [title]="likeOrUnlikeText" [ngStyle]="{'cursor': 'pointer'}"> 👍 </span> <span [ngStyle]="{color: 'rgb(0,'+faceSnap.snaps+',0)'}"> {{ faceSnap.snaps }} </span>   </p>
+</div>
